@@ -1,0 +1,10 @@
+{
+  "name": "Gulzar Dental Clinic",
+  "description": "Premium dental clinic in Sargodha offering expert family care, restorative treatments, and oral hygiene by dedicated practitioners.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}
