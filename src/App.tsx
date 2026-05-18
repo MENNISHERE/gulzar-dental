@@ -42,7 +42,13 @@ import {
 
 // --- Constants ---
 
-const WHATSAPP_URL = "https://wa.me/923006038297";
+const getWhatsAppUrl = (service?: string) => {
+  const phone = "923006038297";
+  const message = service 
+    ? `Main ${service} ke liye appointment book karna chahta/chahti hoon.`
+    : "Main appointment book karna chahta/chahti hoon.";
+  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+};
 const TIKTOK_URL = "https://www.tiktok.com/@gulzardentalclinic"; // Please update this with your actual link
 const OLADOC_URL = "https://oladoc.com/pakistan/sargodha/h/gulzar-dental-clinic/15501";
 const LOGO_URL = "https://i.postimg.cc/W1s8JwB1/file-00000000e988722f8a542eda2234d7c0.png";
@@ -153,7 +159,7 @@ interface Testimonial {
 
 const WhatsAppButton = () => (
   <motion.a
-    href={WHATSAPP_URL}
+    href={getWhatsAppUrl()}
     target="_blank"
     rel="noopener noreferrer"
     initial={{ scale: 0, opacity: 0 }}
@@ -388,7 +394,7 @@ const Hero = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a 
-              href={WHATSAPP_URL}
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative bg-teal-500 hover:bg-teal-400 text-slate-950 px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 glow-teal transition-all active:scale-95 text-sm md:text-base"
@@ -550,13 +556,24 @@ const ServicesGrid = ({ limit }: { limit?: number }) => {
                 <p className="text-slate-300 text-sm leading-relaxed mb-6 transform opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0 line-clamp-2">
                   {service.description} Expert {service.title.toLowerCase()} services at affordable rates in Sargodha.
                 </p>
-                <button 
-                  onClick={() => setSelectedService(service)}
-                  className="group/btn inline-flex items-center gap-2 text-teal-400 text-xs font-bold uppercase tracking-[0.2em] hover:text-white transition-colors"
-                >
-                  Learn More
-                  <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                <div className="flex items-center gap-4">
+                  <button 
+                    onClick={() => setSelectedService(service)}
+                    className="group/btn inline-flex items-center gap-2 text-teal-400 text-xs font-bold uppercase tracking-[0.2em] hover:text-white transition-colors"
+                  >
+                    Learn More
+                    <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
+                  <a 
+                    href={getWhatsAppUrl(service.title)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/book inline-flex items-center gap-2 bg-teal-500/10 text-teal-400 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-[0.1em] hover:bg-teal-500 hover:text-slate-950 transition-colors border border-teal-500/30"
+                  >
+                    Book
+                    <MessageSquare className="w-3 h-3 group-hover/book:scale-110 transition-transform" />
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -639,16 +656,12 @@ const ServicesGrid = ({ limit }: { limit?: number }) => {
                    </div>
                    <button 
                     onClick={() => {
-                      setSelectedService(null);
-                      if (isHome) {
-                        document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
-                      } else {
-                        navigate('/booking');
-                      }
+                      window.open(getWhatsAppUrl(selectedService.title), '_blank');
                     }}
-                    className="w-full sm:w-auto bg-teal-500 text-slate-950 px-8 py-4 rounded-xl md:rounded-2xl font-bold glow-teal transition-all text-sm md:text-base text-center"
+                    className="w-full sm:w-auto flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-950 px-8 py-4 rounded-xl md:rounded-2xl font-bold glow-teal transition-all text-sm md:text-base text-center"
                    >
                      Book Treatment
+                     <MessageSquare className="w-4 h-4" />
                    </button>
                 </div>
               </div>
@@ -708,7 +721,7 @@ const BookingSection = () => {
                 </p>
                 
                 <MagneticButton 
-                  onClick={() => window.open(WHATSAPP_URL, '_blank')}
+                  onClick={() => window.open(getWhatsAppUrl(), '_blank')}
                   className="w-full"
                 >
                   <div className="bg-emerald-500 hover:bg-emerald-400 text-slate-900 w-full py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg flex items-center justify-center gap-3 shadow-[0_0_30px_-5px_rgba(16,185,129,0.4)] transition-all">
