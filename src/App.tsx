@@ -29,7 +29,8 @@ import {
   Video,
   HandHeart,
   Trash2,
-  Smile
+  Smile,
+  Facebook
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { 
@@ -49,6 +50,7 @@ const getWhatsAppUrl = (service?: string) => {
     : "Main appointment book karna chahta/chahti hoon.";
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 };
+const FACEBOOK_URL = "https://www.facebook.com/gulzar.khan.589583";
 const TIKTOK_URL = "https://www.tiktok.com/@gulzardentalclinic"; // Please update this with your actual link
 const OLADOC_URL = "https://oladoc.com/pakistan/sargodha/h/gulzar-dental-clinic/15501";
 const LOGO_URL = "https://i.postimg.cc/W1s8JwB1/file-00000000e988722f8a542eda2234d7c0.png";
@@ -1042,8 +1044,13 @@ const Footer = () => {
             Committed to providing premium, affordable dental care for families in Sargodha. Experience clinical excellence in a welcoming environment.
           </p>
           <div className="flex gap-4">
-             <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass rounded-2xl flex items-center justify-center text-slate-400 hover:text-teal-500 transition-all">
-                <Music className="w-5 h-5" />
+             <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass rounded-2xl flex items-center justify-center text-slate-400 hover:text-[#1877F2] transition-colors shadow-lg">
+                <Facebook className="w-5 h-5 fill-current" />
+             </a>
+             <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass rounded-2xl flex items-center justify-center text-slate-400 hover:text-white transition-colors shadow-lg">
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                </svg>
              </a>
           </div>
         </div>
