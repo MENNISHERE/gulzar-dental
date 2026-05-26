@@ -297,7 +297,7 @@ const Navbar = () => {
       )}>
         <Link to="/" className="flex items-center gap-2 md:gap-3">
           <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-none shrink-0">
-            <img src={LOGO_URL} alt="Gulzar Dental Clinic Logo - Best Dental Care in Sargodha" className="w-full h-full object-cover scale-110" />
+            <img src={LOGO_URL} alt="Gulzar Dental Clinic Logo - Best Dental Care in Sargodha" className="w-full h-full object-cover scale-110" fetchPriority="high" loading="eager" />
           </div>
           <span className="font-display font-black text-base md:text-xl tracking-tighter text-white whitespace-nowrap">
             GULZAR DENTAL <span className="text-teal-500">CLINIC</span>
@@ -1034,7 +1034,7 @@ const Footer = () => {
         <div className="max-w-sm">
           <div className="flex items-center gap-2 mb-6">
             <div className="w-10 h-10 rounded-xl overflow-hidden border border-white/10">
-               <img src={LOGO_URL} alt="Gulzar Dental Clinic Footer Logo - Best Choice in Sargodha" className="w-full h-full object-cover" />
+               <img src={LOGO_URL} alt="Gulzar Dental Clinic Footer Logo - Best Choice in Sargodha" className="w-full h-full object-cover" fetchPriority="high" loading="eager" />
             </div>
             <span className="font-display font-bold text-xl tracking-tight text-white">
               GULZAR <span className="text-teal-500">CLINIC</span>
